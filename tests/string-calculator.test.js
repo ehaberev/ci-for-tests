@@ -24,7 +24,7 @@ describe('StringCalculator class:', () => {
     const sum = calculator.add(`${number}`);
 
     // Assert
-    expect(sum).toBe(number);
+    expect(sum).toBe(number + 1);
   });
 
   test('Argument is a string with non digit chars', () => {
