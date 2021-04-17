@@ -21,6 +21,7 @@ describe('StringCalculator class:', () => {
     const number = 5;
 
     // Act
+    debugger;
     const sum = calculator.add(`${number}`);
 
     // Assert

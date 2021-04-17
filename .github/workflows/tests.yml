@@ -19,5 +19,8 @@ jobs:
         set -x
         npm install
 
+    - name: Start JSON Server
+      run: npx json-server ./src/db.json
+    
     - name: Run tests
       run: npm test
