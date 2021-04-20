@@ -1,0 +1,32 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  test-app:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+
+    - name: Install dependencies
+      run: |
+        set -x
+        npm install
+
+      - name: Install dependencies
+      run: |
+        set -x
+        docker pull ekhaberev/isolation-example:latest
+        docker run --rm -d -p 3000:3000/tcp ekhaberev/isolation-example:latest
+      
+    - name: Run tests
+      run: npm test
+      
+    - name: Stop JSON Server
+      run: pm2 stop all
