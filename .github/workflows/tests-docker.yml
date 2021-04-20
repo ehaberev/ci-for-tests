@@ -32,4 +32,3 @@ jobs:
       run: |
         set -x
         docker stop json-server-tests
-        docker rmi json-server-tests
