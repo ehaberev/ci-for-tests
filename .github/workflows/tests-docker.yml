@@ -22,11 +22,14 @@ jobs:
     - name: Run JSON Server in Docker
       run: |
         set -x
-        docker pull ekhaberev/isolation-example:latest
-        docker run --rm -d --name json-server-tests -p 3000:3000/tcp ekhaberev/isolation-example:latest
+        docker pull ekhaberev/isolation-demo:1.0.0
+        docker run --rm -d --name json-server-tests -p 3000:3000/tcp ekhaberev/isolation-demo:1.0.0
       
     - name: Run tests
       run: npm test
       
     - name: Stop Docker
-      run: docker stop json-server-tests
+      run: |
+        set -x
+        docker stop json-server-tests
+        docker rmi json-server-tests
