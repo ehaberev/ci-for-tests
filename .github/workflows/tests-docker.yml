@@ -19,14 +19,14 @@ jobs:
         set -x
         npm install
 
-      - name: Install dependencies
+      - name: Run JSON Server in Docker
       run: |
         set -x
         docker pull ekhaberev/isolation-example:latest
-        docker run --rm -d -p 3000:3000/tcp ekhaberev/isolation-example:latest
+        docker run --rm -d --name json-server-tests -p 3000:3000/tcp ekhaberev/isolation-example:latest
       
     - name: Run tests
       run: npm test
       
-    - name: Stop JSON Server
-      run: pm2 stop all
+    - name: Stop Docker
+      run: docker stop json-server-tests
